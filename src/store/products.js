@@ -17,24 +17,31 @@ function productsReducer(state = initialState, action) {
                 ...state,
                 products: initialState.products.filter(product => product.category === action.payload.name)
             }
+
+            case 'ADD_TO_CART':
+                return {
+                    ...state,
+                    inStock: state.products.filter(product => {
+                        if(product.name === action.payload.name) {
+                            product.inStock = product.inStock - 1;
+                        }
+                    })
+                }
+
+                case 'REMOVE_FROM_CART':
+                    return { 
+                        ...state,
+                        inStock: state.products.filter(product => {
+                            if (product.name === action.payload.name) {
+                                product.inStock = product.inStock + 1;
+                            }
+                        })
+                    }
+
             case 'RESET': 
             return initialState;
             default:
                 return state;
-    }
-}
-
-export const changeProducts = (category) => {
-    return {
-        type: 'CHANGE_PRODUCTS',
-        payload: category,
-    }
-}
-
-export const reset = () => {
-    return {
-        type: 'RESET',
-        payload: {}
     }
 }
 

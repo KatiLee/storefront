@@ -1,7 +1,7 @@
 function Footer() {
     return(
         <footer>
-            <p>Kati Lee</p>
+            <p>&copy Kati Lee</p>
         </footer>
     )
 }
