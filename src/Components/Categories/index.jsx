@@ -1,26 +1,33 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeProducts } from '../../store/categories';
+import { changeProducts, reset } from '../../store/action';
+import { Button, ButtonGroup } from '@mui/material';
 
-function Categories () {
-const { categories } = useSelector((state) => state.categories);
-console.log('these are the categories', categories);
+function Categories() {
+    const { categories } = useSelector((state) => state.categories);
+    console.log('these are the categories', categories);
 
-const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-const categoryHandler = (category) => {
-    dispatch(changeProducts(category));
-};
+    const categoryHandler = (category) => {
+        dispatch(changeProducts(category));
+    };
 
-return (
-    <>
-    <h1>Category</h1>
-    {categories.map((category, index) => (
-        <article key={`categories-${index}`}>
-            <h2 onClick={() => categoryHandler(category)}>{category.displayName}</h2>
-        </article>
-    ))}
-    </>
-)
+    return (
+        <>
+            <h1>Category</h1>
+            <ButtonGroup variant="text" aria-label="text button group">
+                {categories.map((category, index) => (
+                    <Button key={`categories-${index}`} className='links' onClick={() => categoryHandler(category)}>
+                        {category.displayName}
+                    </Button>
+                ))
+                }
+            </ButtonGroup>
+            <Button onClick={() => reset()}>
+                Reset
+            </Button>
+        </>
+    )
 }
 
 export default Categories;

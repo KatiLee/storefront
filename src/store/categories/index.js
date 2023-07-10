@@ -21,18 +21,4 @@ function categoriesReducer(state = initialState, action) {
     }
 }
 
-export const changeProducts = (category) => {
-    return {
-        type: 'CHANGE_PRODUCTS',
-        payload: category,
-    }
-}
-
-export const reset = () => {
-    return {
-        type: 'RESET',
-        payload: {}
-    }
-}
-
 export default categoriesReducer;
