@@ -26,8 +26,8 @@ const SimpleCart = () => {
                             }}
                         >
                             <Typography>{product.name}</Typography>
-                            <IconButton>
-                                <DeleteIcon fontSize="small" onClick={() => dispatch(removeFromCart(product))} />
+                            <IconButton fontSize="small" onClick={() => dispatch(removeFromCart(product))}>
+                                <DeleteIcon />
                             </IconButton>
                         </Box>
                     )
