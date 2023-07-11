@@ -23,7 +23,7 @@ function Categories() {
                 ))
                 }
             </ButtonGroup>
-            <Button onClick={() => reset()}>
+            <Button onClick={() => dispatch(reset())}>
                 Reset
             </Button>
         </>
